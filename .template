@@ -25,6 +25,7 @@ fn main() -> Result<(), ()> {
 
 fn part1(input: &str) -> Result<(), ()> {
     for line in input.lines() {
+	// Implement solution for part 1 here <------------------
         let _remove_me = line; // remove this
     }
     Ok(())
@@ -32,6 +33,7 @@ fn part1(input: &str) -> Result<(), ()> {
 
 fn part2(input: &str) -> Result<(), ()> {
     for line in input.lines() {
+	// Implement solution for part 2 here <------------------
         let _remove_me = line; // remove this
     }
     Ok(())
