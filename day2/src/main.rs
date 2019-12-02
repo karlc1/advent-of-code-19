@@ -25,7 +25,7 @@ fn main() -> Result<(), ()> {
 
 fn part1(input: &str) -> Result<(), ()> {
 
-    let numbers: Vec<i32> = input.split(",").map(|x| x.trim().parse().unwrap()).collect();
+    let mut numbers: Vec<i32> = input.split(",").map(|x| x.trim().parse().unwrap()).collect();
 
     let mut i = 0;
 
@@ -33,8 +33,22 @@ fn part1(input: &str) -> Result<(), ()> {
         if numbers[i] == 99 || i >= numbers.len()  {
             break;
         }
-
+        else if numbers[i] == 1 {
+           let j = numbers[i+3];
+           numbers[j as usize] = numbers[i+1] + numbers[i +2]; 
+           // numbers[numbers[i+3]] = numbers[i+1] + numbers[i +2]; 
+        }
+        else if numbers[i] == 2 {
+            let j = numbers[i+3];
+            numbers[j as usize] = numbers[i+1] * numbers[i +2]; 
+        }
+        else {
+            println!("Something went wrong, expected number 1, 2 or 99 but got {}", numbers[i]);
+        }
+        i += 4;
     }
+
+    println!("Result: {}", numbers[0]);
 
     Ok(())
 }
