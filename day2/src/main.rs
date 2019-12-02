@@ -27,9 +27,15 @@ fn part1(input: &str) -> Result<(), ()> {
 
     let numbers: Vec<i32> = input.split(",").map(|x| x.trim().parse().unwrap()).collect();
 
-    for num in numbers {
-        println!("{}", num);
+    let mut i = 0;
+
+    loop {
+        if numbers[i] == 99 || i >= numbers.len()  {
+            break;
+        }
+
     }
+
     Ok(())
 }
 
