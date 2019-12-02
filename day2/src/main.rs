@@ -24,9 +24,11 @@ fn main() -> Result<(), ()> {
 }
 
 fn part1(input: &str) -> Result<(), ()> {
-    for line in input.lines() {
-	// Implement solution for part 1 here <------------------
-        let _remove_me = line; // remove this
+
+    let numbers: Vec<i32> = input.split(",").map(|x| x.trim().parse().unwrap()).collect();
+
+    for num in numbers {
+        println!("{}", num);
     }
     Ok(())
 }
