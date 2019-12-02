@@ -56,8 +56,9 @@ fn part2(input: &str) -> Result<(), ()> {
 }
 
 fn get_fuel_consumption(remaining_mass: i32, total_fuel: i32) -> i32 {
-    if remaining_mass / 3 - 2 <= 0 {
+    let fuel_consumption = remaining_mass / 3 - 2;
+    if fuel_consumption <= 0 {
         return total_fuel;
     }
-    return get_fuel_consumption(remaining_mass / 3 - 2, total_fuel + remaining_mass / 3 - 2);
+    return get_fuel_consumption(fuel_consumption, total_fuel + fuel_consumption);
 }
