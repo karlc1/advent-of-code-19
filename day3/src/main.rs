@@ -24,10 +24,25 @@ fn main() -> Result<(), ()> {
 }
 
 fn part1(input: &str) -> Result<(), ()> {
-    for line in input.lines() {
-	// Implement solution for part 1 here <------------------
-        let _remove_me = line; // remove this
+    let mut wires = input.lines();
+
+    let first_wire: Vec<&str> = wires.next().unwrap().trim().split(",").map(|x| x.trim()).collect();
+    let second_wire: Vec<&str> = wires.next().unwrap().trim().split(",").map(|x| x.trim()).collect();
+
+    for coordinate in first_wire {
+        let mut direction = '-';
+        let mut steps_str = String::from("");
+        for (i, c) in coordinate.chars().enumerate() {
+          if i == 0 {
+            direction = c;
+            continue;
+          } 
+          steps_str.push(c);
+        }
+
+        let steps: i32 = steps_str.parse().expect("Expected a number");
     }
+
     Ok(())
 }
 
