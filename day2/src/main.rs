@@ -38,7 +38,6 @@ fn part1(input: &str) -> Result<(), ()> {
         let operator = numbers[i];
 
         if operator == 99 {
-            println!("breaking");
             break;
         }
 
@@ -59,9 +58,46 @@ fn part1(input: &str) -> Result<(), ()> {
 }
 
 fn part2(input: &str) -> Result<(), ()> {
-    for line in input.lines() {
-	// Implement solution for part 2 here <------------------
-        let _remove_me = line; // remove this
+    
+    let input_s: Vec<i32> = input.split(",").map(|x| x.trim().parse().unwrap()).collect();
+
+    for noun in 0..input_s.len() {
+        for verb in 0..input_s.len() {
+
+            let mut numbers: Vec<i32> = input.split(",").map(|x| x.trim().parse().unwrap()).collect();
+            numbers[1] = noun as i32;
+            numbers[2] = verb as i32;
+            let mut i = 0usize;
+
+            loop {
+                if i >= numbers.len() - 1{
+                    break;
+                }
+                let operator = numbers[i];
+
+                if operator == 99 {
+                    break;
+                }
+
+                let operand_1_pos = numbers[i + 1] as usize;
+                let operand_2_pos = numbers[i + 2] as usize;
+                let target_pos = numbers[i + 3] as usize;
+
+                if operator == 1 {
+                   numbers[target_pos] = numbers[operand_1_pos] + numbers[operand_2_pos]; 
+                }
+                if operator == 2 {
+                   numbers[target_pos] = numbers[operand_1_pos] * numbers[operand_2_pos]; 
+                }
+
+                if numbers[0] == 19690720 {
+                    println!("Result: {}", 100 * noun + verb);
+                    return Ok(());
+                }
+
+                i += 4;
+            }
+        }
     }
     Ok(())
 }
